@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+ <!-- Mapping configuration details between Customer class and customer table -->
+<hibernate-mapping package="org.cuatrovientos.inventory.models">
+ 
+    <class name="DeviceType" table="devicetype">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" />
+        <!-- In lazy mode data will load only when used... -->
+        <set name="devices" table="device" cascade="delete"  lazy="false">
+            <key>
+                <column name="iddevicetype"  />
+            </key>
+            <one-to-many class="org.cuatrovientos.inventory.models.Device" />
+        </set>
+    </class>
+ 
+</hibernate-mapping>
