@@ -3,16 +3,25 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Device Update OK</title>
+	<title>Detail for device ${device.id}</title>
 </head>
 <body>
 <h1>
-	Ok, Device was updated
+	Detail for ${device.name} device
 </h1>
 
 <div>
+<ul>
+<li><strong>Id:</strong>${device.id}</li>
+<li><strong>Name:</strong>${device.name}</li>
+<li><strong>Description:</strong>${device.description}</li>
+<li><strong>Device type:</strong>${device.deviceType.name}</li>
+</ul>
+</div>
+
+<div>
 	<s:url value="/devicetypes/detail/{id}" var="backToDetailURL" >
-		<s:param name="id" value="${deviceTypeId}" />
+		<s:param name="id" value="${device.deviceType.id}" />
 	</s:url>
 	<a href="${backToDetailURL}">Return to DeviceType detail</a>  |
 	<a href="<c:url value="/devicetypes" />">Go back to Device Types</a> |

@@ -3,20 +3,20 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Save OK</title>
+	<title>Device Saved OK</title>
 </head>
 <body>
 <h1>
-	New Product was created
+	New Device was created
 </h1>
 
 <div>
 
-	<s:url value="/producttypes/detail/{id}" var="backToDetailURL" >
-		<s:param name="id" value="${idProductType}" />
+	<s:url value="/devicetypes/detail/{id}" var="backToDetailURL" >
+		<s:param name="id" value="${idDeviceType}" />
 	</s:url>
-		<a href="${backToDetailURL}">Return to ProductType detail</a>  | |
-	<a href="<c:url value="/producttypes/" />">Go back to Product Types</a> |
+		<a href="${backToDetailURL}">Return to DeviceType detail</a>  | |
+	<a href="<c:url value="/devicetypes/" />">Go back to Device Types</a> |
 	<a href="<c:url value="/" />">Return home</a> 
 </div>  
 </body>

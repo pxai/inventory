@@ -3,20 +3,20 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Delete Product</title>
+	<title>Delete Device</title>
 </head>
 <body>
 <h1>
-	Delete Product
+	Delete Device
 </h1>
 
-<p>Product ${deletedId} deleted.</p>
+<p>Device ${deletedId} deleted.</p>
 <div>
-	<s:url value="/producttypes/detail/{id}" var="backToDetailURL" >
-		<s:param name="id" value="${productTypeId}" />
+	<s:url value="/devicetypes/detail/{id}" var="backToDetailURL" >
+		<s:param name="id" value="${deviceTypeId}" />
 	</s:url>
 	
-	<a href="${backToDetailURL}">Return to ProductType detail</a>  |
+	<a href="${backToDetailURL}">Return to DeviceType detail</a>  |
 	<a href="<c:url value="/" />">Go back home</a> |
 	
 </div>  
