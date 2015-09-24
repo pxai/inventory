@@ -6,7 +6,6 @@ package org.cuatrovientos.inventory.dao;
 import java.util.List;
 
 import org.cuatrovientos.inventory.models.DeviceType;
-import org.cuatrovientos.inventory.models.Product;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;

@@ -12,7 +12,6 @@ import org.cuatrovientos.inventory.dao.GenericDAO;
 import org.cuatrovientos.inventory.models.Device;
 import org.cuatrovientos.inventory.models.DeviceType;
 import org.cuatrovientos.inventory.models.PaginationFormCriteria;
-import org.cuatrovientos.inventory.models.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class DeviceTypeController {
 	private DeviceTypeDAO deviceTypeDAO;
 
 	@Autowired
-	private GenericDAO<Product> productDAO;
+	private GenericDAO<Device> productDAO;
 
 
 	/**
@@ -136,7 +135,7 @@ public class DeviceTypeController {
 	 */
 	@RequestMapping(value = "/devicetypes/search", method = RequestMethod.POST)
 	public String searchDeviceTypes (@ModelAttribute DeviceType deviceType, Model model) {
-		logger.info("Searching Product types");
+		logger.info("Searching Device types");
 				
 		DeviceType emptyDeviceType = new DeviceType();
 		model.addAttribute("emptyDeviceType", emptyDeviceType);
@@ -155,7 +154,7 @@ public class DeviceTypeController {
 	 */
 	@RequestMapping(value = "/devicetypes/paginated", method = RequestMethod.POST)
 	public String searchDeviceTypes (@ModelAttribute PaginationFormCriteria criteria, Model model) {
-		logger.info("Paginating Product types");
+		logger.info("Paginating Device types");
 				
 		DeviceType emptyDeviceType = new DeviceType();
 		model.addAttribute("emptyDeviceType", emptyDeviceType);
@@ -174,11 +173,11 @@ public class DeviceTypeController {
 	*/
 	@RequestMapping(value={"/devicetypes/detail/{id}"},method=RequestMethod.GET)
 	public String detail (@PathVariable("id") long id, Model model) {
-		logger.info("Product type detail");
+		logger.info("Device type detail");
 		
 		DeviceType deviceType = deviceTypeDAO.selectById(id, DeviceType.class);
 
-		// We create an empty Product in relation with the detailed DeviceType
+		// We create an empty Device in relation with the detailed DeviceType
 		Device device = new Device();
 		device.setDeviceType(deviceType);
 		
