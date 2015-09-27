@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+ <!-- Mapping configuration details between Customer class and customer table -->
+<hibernate-mapping package="org.cuatrovientos.inventory.models">
+ 
+    <class name="Device" table="device">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" />
+        <property name="brand" column="brand"/>
+        <property name="color" column="color"/>
+        <property name="description" column="description"/>
+        <many-to-one name="deviceType"  lazy="false" column="iddevicetype" />
+        <many-to-one name="deviceStatus"  lazy="false" column="iddevicestatus" />
+        <property name="motherboard" column="motherboard"/>
+        <property name="ram" column="ram"/>
+        <property name="cpu" column="cpu"/>
+        <property name="hardisk" column="hardisk"/>
+        <property name="os" column="os"/>
+        <property name="flash" column="flash"/>
+        <property name="interfaces" column="interfaces"/>
+    </class>
+ 
+</hibernate-mapping>
