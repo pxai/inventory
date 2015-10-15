@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Generic DAO to share logic between all the specific DAOs.
  * 
- * @author Eugenia Pérez Martínez
+ * @author Eugenia Perez Martinez
  * @email eugenia_perez@cuatrovientos.org
  */
 public class GenericDAO<T> {
