@@ -1,77 +1,116 @@
--- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2015 a las 11:02:37
--- Versión del servidor: 5.5.27
--- Versión de PHP: 5.4.7
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de datos: `sistema`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `product`
---
-
-CREATE TABLE IF NOT EXISTS `product` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `device` (
+  `id` bigint(20) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `brand` varchar(255) DEFAULT NULL,
+  `color` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `idproducttype` bigint(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKED8DCCEF968F03F8` (`idproducttype`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `iddevicetype` bigint(20) DEFAULT NULL,
+  `iddevicestatus` bigint(20) DEFAULT NULL,
+  `motherboard` varchar(255) DEFAULT NULL,
+  `ram` varchar(255) DEFAULT NULL,
+  `cpu` varchar(255) DEFAULT NULL,
+  `hardisk` varchar(255) DEFAULT NULL,
+  `os` varchar(255) DEFAULT NULL,
+  `flash` varchar(255) DEFAULT NULL,
+  `interfaces` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `product`
+-- Volcado de datos para la tabla `device`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `idproducttype`) VALUES
-(3, 'cvxcv', 'xcvxcvxcv', NULL),
-(4, 'dfgdgdfg', 'dfgdfgdf', NULL);
+INSERT INTO `device` (`id`, `name`, `brand`, `color`, `description`, `iddevicetype`, `iddevicestatus`, `motherboard`, `ram`, `cpu`, `hardisk`, `os`, `flash`, `interfaces`) VALUES
+(2, 'aaa', 'bbb', 'eee', 'aaaa', 3, 1, 'aaa', '23', 'aaaa', 'aaaa', 'aaaa', 'aaa', 'aaa');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producttype`
+-- Estructura de tabla para la tabla `devicestatus`
 --
 
-CREATE TABLE IF NOT EXISTS `producttype` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+CREATE TABLE `devicestatus` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `producttype`
+-- Volcado de datos para la tabla `devicestatus`
 --
 
-INSERT INTO `producttype` (`id`, `name`) VALUES
-(2, 'aaaa');
+INSERT INTO `devicestatus` (`id`, `name`) VALUES
+(1, 'OK'),
+(2, 'Completely broken');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `devicetype`
+--
+
+CREATE TABLE `devicetype` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `devicetype`
+--
+
+INSERT INTO `devicetype` (`id`, `name`) VALUES
+(1, 'Desktop Computer'),
+(2, 'Display'),
+(3, 'Switch');
+
+--
+-- �ndices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `device`
+--
+ALTER TABLE `device`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKB06B1E563F5A960F` (`iddevicetype`),
+  ADD KEY `FKB06B1E56CF099CBF` (`iddevicestatus`);
+
+--
+-- Indices de la tabla `devicestatus`
+--
+ALTER TABLE `devicestatus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `devicetype`
+--
+ALTER TABLE `devicetype`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `device`
+--
+ALTER TABLE `device`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `devicestatus`
+--
+ALTER TABLE `devicestatus`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `devicetype`
+--
+ALTER TABLE `devicetype`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `product`
+-- Filtros para la tabla `device`
 --
-ALTER TABLE `product`
-  ADD CONSTRAINT `FKED8DCCEF968F03F8` FOREIGN KEY (`idproducttype`) REFERENCES `producttype` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `device`
+  ADD CONSTRAINT `FKB06B1E563F5A960F` FOREIGN KEY (`iddevicetype`) REFERENCES `devicetype` (`id`),
+  ADD CONSTRAINT `FKB06B1E56CF099CBF` FOREIGN KEY (`iddevicestatus`) REFERENCES `devicestatus` (`id`);
